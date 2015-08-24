@@ -55,6 +55,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jbAcessar.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jbAcessar.setText("Acessar");
+        jbAcessar.setFocusPainted(false);
         jbAcessar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAcessarActionPerformed(evt);
@@ -127,6 +128,7 @@ public class TelaLogin extends javax.swing.JFrame {
         if(status == true) {
             this.dispose();
             MenuPrincipal menu = new MenuPrincipal();
+            menu.UserAtual(usuario);
             menu.show();
         } else {
             JOptionPane.showMessageDialog(null, "Usuario ou Senha invalida!", "Acesso ao Sistema", JOptionPane.INFORMATION_MESSAGE);

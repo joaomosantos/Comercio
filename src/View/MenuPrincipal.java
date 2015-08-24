@@ -7,6 +7,7 @@ package View;
 
 import javax.swing.ImageIcon;
 import Dao.DBAConexao;
+import Object.Pessoa;
 
 /**
  *
@@ -18,7 +19,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
-        this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());      
+        this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
+    }
+    
+    public void UserAtual(Pessoa usuario) { 
+        jlUsuarioAtual.setText(usuario.getNome());
     }
 
     /**
@@ -30,6 +35,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jlUsuarioAtual = new javax.swing.JLabel();
         jmbMenuPrincipal = new javax.swing.JMenuBar();
         jmConfiguracao = new javax.swing.JMenu();
         jmiAdministrarAcesso = new javax.swing.JMenuItem();
@@ -42,6 +50,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
+
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton1.setText("Sair");
+        jButton1.setFocusPainted(false);
+
+        jlUsuarioAtual.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        jlUsuarioAtual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlUsuarioAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlUsuarioAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap())
+        );
 
         jmConfiguracao.setText("Configuração");
         jmConfiguracao.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
@@ -63,11 +101,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(763, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(683, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -119,6 +163,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jlUsuarioAtual;
     private javax.swing.JMenu jmConfiguracao;
     private javax.swing.JMenuBar jmbMenuPrincipal;
     private javax.swing.JMenuItem jmiAdministrarAcesso;

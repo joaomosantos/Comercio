@@ -9,9 +9,10 @@ public class ModelSistema {
         c.conectar();
         try {
             c.stm = c.conexao.createStatement();
-            c.rs = c.stm.executeQuery("SELECT USUARIO, SENHA FROM TB_USUARIO");
+            c.rs = c.stm.executeQuery("SELECT NOME, USUARIO, SENHA FROM TB_USUARIO");
             while (c.rs.next()) {
-                if(usuario.getUsuario().equals(c.rs.getString("USUARIO")) && usuario.getSenha().equals(c.rs.getString("SENHA"))) { 
+                if(usuario.getUsuario().equals(c.rs.getString("USUARIO")) && usuario.getSenha().equals(c.rs.getString("SENHA"))) {
+                    usuario.setNome(c.rs.getString("NOME"));
                     return true;
                 }                
             }  
