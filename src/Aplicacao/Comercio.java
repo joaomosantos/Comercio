@@ -1,10 +1,10 @@
 package Aplicacao;
-import View.menuPrincipal;
+import View.telaLogin;
 
 public class Comercio {
 
     public static void main(String[] args) {
-        menuPrincipal menu = new menuPrincipal();
-        menu.show();
+        telaLogin acesso = new telaLogin();
+        acesso.show();
     }
 }

@@ -13,15 +13,12 @@ import Dao.dbaConexao;
  * @author Max Oliveira
  */
 public class menuPrincipal extends javax.swing.JFrame {
-
-    dbaConexao conexao = new dbaConexao();
     /**
      * Creates new form menuPrincipal
      */
     public menuPrincipal() {
         initComponents();
-        this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
-        conexao.conectar();        
+        this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());      
     }
 
     /**
@@ -82,7 +79,7 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAdministrarAcessoActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        conexao.desconectar();
+
     }//GEN-LAST:event_formWindowClosing
 
     /**
