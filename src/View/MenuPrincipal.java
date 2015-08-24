@@ -6,7 +6,7 @@
 package View;
 
 import javax.swing.ImageIcon;
-import Dao.dbaConexao;
+import Dao.DBAConexao;
 
 /**
  *
@@ -34,7 +34,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jmConfiguracao = new javax.swing.JMenu();
         jmiAdministrarAcesso = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Comercio");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addWindowListener(new java.awt.event.WindowAdapter() {

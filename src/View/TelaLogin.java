@@ -5,7 +5,10 @@
  */
 package View;
 
+import Object.Pessoa;
 import javax.swing.ImageIcon;
+import Controller.ControllerSistema;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -52,6 +55,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jbAcessar.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jbAcessar.setText("Acessar");
+        jbAcessar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAcessarActionPerformed(evt);
+            }
+        });
 
         jpfSenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -108,6 +116,22 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAcessarActionPerformed
+        boolean status;
+        Pessoa usuario = new Pessoa();
+        usuario.setUsuario(jtfUsuario.getText().toUpperCase());
+        usuario.setSenha(String.valueOf(jpfSenha.getPassword()).toUpperCase());
+        ControllerSistema controllersistema = new ControllerSistema();
+        status = controllersistema.validarUsuario(usuario);
+        if(status == true) {
+            this.dispose();
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.show();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario ou Senha invalida!", "Acesso ao Sistema", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jbAcessarActionPerformed
 
     /**
      * @param args the command line arguments
