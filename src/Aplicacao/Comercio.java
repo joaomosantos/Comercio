@@ -1,11 +1,10 @@
 package Aplicacao;
-import Dao.dbaConexao;
+import View.menuPrincipal;
 
 public class Comercio {
 
     public static void main(String[] args) {
-        dbaConexao conexao = new dbaConexao();
-        conexao.conectar();
+        menuPrincipal menu = new menuPrincipal();
+        menu.show();
     }
-
 }
