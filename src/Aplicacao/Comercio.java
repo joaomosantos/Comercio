@@ -1,10 +1,10 @@
 package Aplicacao;
-import View.telaLogin;
+import View.TelaLogin;
 
 public class Comercio {
-
+    
     public static void main(String[] args) {
-        telaLogin acesso = new telaLogin();
-        acesso.show();
+        TelaLogin acesso = new TelaLogin();
+        acesso.show();       
     }
 }
