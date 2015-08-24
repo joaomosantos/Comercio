@@ -6,6 +6,7 @@
 package View;
 
 import javax.swing.ImageIcon;
+import Dao.dbaConexao;
 
 /**
  *
@@ -13,12 +14,14 @@ import javax.swing.ImageIcon;
  */
 public class menuPrincipal extends javax.swing.JFrame {
 
+    dbaConexao conexao = new dbaConexao();
     /**
      * Creates new form menuPrincipal
      */
     public menuPrincipal() {
         initComponents();
-        this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());  
+        this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
+        conexao.conectar();        
     }
 
     /**
@@ -37,6 +40,11 @@ public class menuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Comercio");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jmConfiguracao.setText("Configuração");
         jmConfiguracao.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
@@ -72,6 +80,10 @@ public class menuPrincipal extends javax.swing.JFrame {
     private void jmiAdministrarAcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAdministrarAcessoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiAdministrarAcessoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        conexao.desconectar();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
