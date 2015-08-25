@@ -12,4 +12,8 @@ public class ControllerSistema {
     public boolean logoffUsuario() {
         return modelsistema.logoffUsuarioModel();
     }
+    
+    public void salvarUsuario(Pessoa acesso) { 
+        modelsistema.salvarUsuarioModel(acesso);
+    }
 }

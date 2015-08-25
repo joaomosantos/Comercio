@@ -1,6 +1,7 @@
 package Model;
 import Dao.DBAConexao;
 import Object.Pessoa;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class ModelSistema {
@@ -32,4 +33,20 @@ public class ModelSistema {
        }
        return false;
    }
+   
+   public void salvarUsuarioModel(Pessoa acesso) {
+        try {
+            c.pst = c.conexao.prepareStatement("insert into TB_USUARIO (NOME, SOBRENOME, EMAIL, USUARIO, SENHA, ATIVO) values (?,?,?,?,?,?)");
+            c.pst.setString(1, acesso.getNome());
+            c.pst.setString(2, acesso.getSobrenome());
+            c.pst.setString(3, acesso.getEmail());
+            c.pst.setString(4, acesso.getUsuario());
+            c.pst.setString(5, acesso.getSenha());
+            c.pst.setBoolean(6, acesso.isAtivo());
+            c.pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Salvo com Sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na inserção!\nErro: " + ex.getMessage());
+        }
+    }
 }

@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 public class DBAConexao {
     public Statement stm; // Responsavel por preparar e realizar pesquisas no banco de dados;
     public ResultSet rs; // Responsavel por armazenar o resultado de um pesquisa passada para o statement;
+    public PreparedStatement pst;
     private String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private String caminho = "jdbc:sqlserver://localhost:1433;databaseName=DB_COMERCIO"; // O "DB_COMERCIO" representa a minha database 
     private String usuario = "admin";

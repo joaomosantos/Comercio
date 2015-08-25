@@ -204,9 +204,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jbSalvar.setText("Salvar");
         jbSalvar.setFocusPainted(false);
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarActionPerformed(evt);
+            }
+        });
 
         jbLimpar.setText("Limpar");
         jbLimpar.setFocusPainted(false);
+        jbLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -358,6 +368,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jmiMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMenuActionPerformed
         hideFull();
     }//GEN-LAST:event_jmiMenuActionPerformed
+
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        Pessoa acesso = new Pessoa();
+        acesso.setNome(jtfNome.getText().toUpperCase());
+        acesso.setSobrenome(jtfSobrenome.getText().toUpperCase());
+        acesso.setEmail(jtfemail.getText().toUpperCase());
+        acesso.setUsuario(jtfUsuario.getText().toUpperCase());
+        acesso.setSenha(jpfSenha.getText().toUpperCase());
+        acesso.setAtivo(jcbAtivo.isSelected());
+        ControllerSistema controllerSistema = new ControllerSistema();
+        controllerSistema.salvarUsuario(acesso);
+    }//GEN-LAST:event_jbSalvarActionPerformed
+
+    private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
+        jtfNome.setText(null);
+        jtfSobrenome.setText(null);
+        jtfemail.setText(null);
+        jtfUsuario.setText(null);
+        jpfSenha.setText(null);
+    }//GEN-LAST:event_jbLimparActionPerformed
 
     /**
      * @param args the command line arguments

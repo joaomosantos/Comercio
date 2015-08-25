@@ -7,6 +7,15 @@ public class Pessoa {
     private String email;
     private String usuario;
     private String senha;
+    private boolean ativo;
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 
     public int getId_usuario() {
         return id_usuario;
