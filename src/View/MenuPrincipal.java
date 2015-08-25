@@ -20,10 +20,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal() {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
+        hideFull();
     }
     
     public void UserAtual(Pessoa usuario) { 
         jlUsuarioAtual.setText(usuario.getNome());
+    }
+    
+    public void hideFull() {
+        jtpAdministrarAcesso.hide();
+    }
+    
+    public void showAdministrarAcesso(boolean b) {
+        jtpAdministrarAcesso.setVisible(b);
     }
 
     /**
@@ -38,7 +47,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jlUsuarioAtual = new javax.swing.JLabel();
+        jpMenu = new javax.swing.JPanel();
+        jtpAdministrarAcesso = new javax.swing.JTabbedPane();
+        jtpCadastrarAcesso = new javax.swing.JTabbedPane();
+        jtpGerenciarAcesso = new javax.swing.JTabbedPane();
         jmbMenuPrincipal = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jmiMenu = new javax.swing.JMenuItem();
         jmConfiguracao = new javax.swing.JMenu();
         jmiAdministrarAcesso = new javax.swing.JMenuItem();
 
@@ -86,6 +101,54 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jpMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jtpAdministrarAcesso.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
+
+        jtpCadastrarAcesso.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jtpAdministrarAcesso.addTab("Cadastrar Acesso", jtpCadastrarAcesso);
+        jtpAdministrarAcesso.addTab("Gerenciar Acesso", jtpGerenciarAcesso);
+
+        javax.swing.GroupLayout jpMenuLayout = new javax.swing.GroupLayout(jpMenu);
+        jpMenu.setLayout(jpMenuLayout);
+        jpMenuLayout.setHorizontalGroup(
+            jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpMenuLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jtpAdministrarAcesso, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jpMenuLayout.setVerticalGroup(
+            jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 670, Short.MAX_VALUE)
+            .addGroup(jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpMenuLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jtpAdministrarAcesso, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        jMenu1.setText("Arquivo");
+        jMenu1.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        jmiMenu.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jmiMenu.setText("Menu");
+        jmiMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiMenu);
+
+        jmbMenuPrincipal.add(jMenu1);
+
         jmConfiguracao.setText("Configuração");
         jmConfiguracao.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
 
@@ -107,14 +170,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(913, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jpMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 907, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(683, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -124,7 +193,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiAdministrarAcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAdministrarAcessoActionPerformed
-        // TODO add your handling code here:
+        hideFull();
+        showAdministrarAcesso(true);
     }//GEN-LAST:event_jmiAdministrarAcessoActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -141,6 +211,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             login.show();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jmiMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMenuActionPerformed
+        hideFull();
+    }//GEN-LAST:event_jmiMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,10 +258,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlUsuarioAtual;
     private javax.swing.JMenu jmConfiguracao;
     private javax.swing.JMenuBar jmbMenuPrincipal;
     private javax.swing.JMenuItem jmiAdministrarAcesso;
+    private javax.swing.JMenuItem jmiMenu;
+    private javax.swing.JPanel jpMenu;
+    private javax.swing.JTabbedPane jtpAdministrarAcesso;
+    private javax.swing.JTabbedPane jtpCadastrarAcesso;
+    private javax.swing.JTabbedPane jtpGerenciarAcesso;
     // End of variables declaration//GEN-END:variables
 }
