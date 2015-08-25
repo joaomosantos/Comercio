@@ -4,10 +4,11 @@ import Object.Pessoa;
 import javax.swing.JOptionPane;
 
 public class ModelSistema {
+   static DBAConexao c = new DBAConexao();
+   
    public boolean validarUsuarioModel(Pessoa usuario) {
-        DBAConexao c = new DBAConexao();
-        c.conectar();
         try {
+            c.conectar();
             c.stm = c.conexao.createStatement();
             c.rs = c.stm.executeQuery("SELECT NOME, USUARIO, SENHA FROM TB_USUARIO");
             while (c.rs.next()) {
@@ -22,5 +23,13 @@ public class ModelSistema {
         }
         c.desconectar();
         return false;
-    } 
+    }
+   
+   public boolean logoffUsuarioModel() {
+       if(c.isConnected()) {
+           c.desconectar();
+           return true;
+       }
+       return false;
+   }
 }

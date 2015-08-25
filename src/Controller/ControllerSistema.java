@@ -1,10 +1,15 @@
 package Controller;
-import Model.ModelSistema;
+import Model.*;
 import Object.Pessoa;
 
 public class ControllerSistema {
-    public boolean validarUsuario(Pessoa usuario) {
-        ModelSistema modelsistema = new ModelSistema();
+    ModelSistema modelsistema = new ModelSistema();
+    
+    public boolean validarUsuario(Pessoa usuario) {   
         return modelsistema.validarUsuarioModel(usuario);
+    }
+    
+    public boolean logoffUsuario() {
+        return modelsistema.logoffUsuarioModel();
     }
 }
