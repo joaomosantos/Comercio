@@ -11,9 +11,9 @@ public class ModelSistema {
         try {
             c.conectar();
             c.stm = c.conexao.createStatement();
-            c.rs = c.stm.executeQuery("SELECT NOME, USUARIO, SENHA FROM TB_USUARIO");
+            c.rs = c.stm.executeQuery("SELECT NOME, USUARIO, SENHA, ATIVO FROM TB_USUARIO");
             while (c.rs.next()) {
-                if(usuario.getUsuario().equals(c.rs.getString("USUARIO")) && usuario.getSenha().equals(c.rs.getString("SENHA"))) {
+                if(usuario.getUsuario().equals(c.rs.getString("USUARIO")) && usuario.getSenha().equals(c.rs.getString("SENHA")) && c.rs.getBoolean("ATIVO") == true) {
                     usuario.setNome(c.rs.getString("NOME"));
                     return true;
                 }                
@@ -36,7 +36,7 @@ public class ModelSistema {
    
    public void salvarUsuarioModel(Pessoa acesso) {
         try {
-            c.pst = c.conexao.prepareStatement("insert into TB_USUARIO (NOME, SOBRENOME, EMAIL, USUARIO, SENHA, ATIVO) values (?,?,?,?,?,?)");
+            c.pst = c.conexao.prepareStatement("INSERT INTO TB_USUARIO (NOME, SOBRENOME, EMAIL, USUARIO, SENHA, ATIVO) VALUES (?,?,?,?,?,?)");
             c.pst.setString(1, acesso.getNome());
             c.pst.setString(2, acesso.getSobrenome());
             c.pst.setString(3, acesso.getEmail());
