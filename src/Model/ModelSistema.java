@@ -2,6 +2,8 @@ package Model;
 import Dao.DBAConexao;
 import Object.Pessoa;
 import java.sql.SQLException;
+import java.util.regex.*;
+import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 
 public class ModelSistema {
@@ -32,6 +34,28 @@ public class ModelSistema {
            return true;
        }
        return false;
+   }
+   
+   public void validarCampos(Pessoa acesso, JTextField [] tf) {
+        String regex = "[\\w\\._@]";
+        Pattern p = Pattern.compile(regex);
+        for(int i = 0; i < tf.length; i++) {
+            if(tf[i].getText().equals("") || tf[i].getText().equals(null)) {
+                JOptionPane.showMessageDialog(null, "Não é permitido campo vazio", "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            } else { 
+                for(int j = 0; j < tf[i].getText().length(); j++) {
+                    char c = tf[i].getText().charAt(j);
+                    String conversao = Character.toString(c);
+                    Matcher m = p.matcher(conversao);
+                    if(!m.matches()) {
+                        JOptionPane.showMessageDialog(null, "Não é permitido caracter especial", "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+                }
+            }
+        }
+        this.salvarUsuarioModel(acesso);
    }
    
    public void salvarUsuarioModel(Pessoa acesso) {
