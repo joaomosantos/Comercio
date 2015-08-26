@@ -8,6 +8,10 @@ package View;
 import javax.swing.ImageIcon;
 import Object.Pessoa;
 import Controller.ControllerSistema;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,7 +24,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal() {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
-        hideFull();
+        hideFull();   
     }
     
     public void UserAtual(Pessoa usuario) { 
@@ -370,6 +374,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiMenuActionPerformed
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        JTextField [] tf = {jtfNome, jtfSobrenome, jtfemail, jtfUsuario, jpfSenha};
+        String regex = "[\\w\\._@]";
+        Pattern p = Pattern.compile(regex);
+        for(int i = 0; i < tf.length; i++) {
+            if(tf[i].getText().equals("") || tf[i].getText().equals(null)) {
+                JOptionPane.showMessageDialog(null, "Não é permitido campo vazio", "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            } else { 
+                for(int j = 0; j < tf[i].getText().length(); j++) {
+                    char c = tf[i].getText().charAt(j);
+                    String conversao = Character.toString(c);
+                    Matcher m = p.matcher(conversao);
+                    if(!m.matches()) {
+                        JOptionPane.showMessageDialog(null, "Não é permitido caracter especial", "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+                }
+            }
+        }
+        
         Pessoa acesso = new Pessoa();
         acesso.setNome(jtfNome.getText().toUpperCase());
         acesso.setSobrenome(jtfSobrenome.getText().toUpperCase());
@@ -386,7 +410,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jtfSobrenome.setText(null);
         jtfemail.setText(null);
         jtfUsuario.setText(null);
-        jpfSenha.setText(null);
+        jpfSenha.setText(null);  
     }//GEN-LAST:event_jbLimparActionPerformed
 
     /**
