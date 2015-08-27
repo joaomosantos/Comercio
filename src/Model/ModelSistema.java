@@ -1,10 +1,13 @@
 package Model;
 import Dao.DBAConexao;
 import Object.Pessoa;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.regex.*;
+import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 public class ModelSistema {
    static DBAConexao c = new DBAConexao();
@@ -40,8 +43,10 @@ public class ModelSistema {
         String regex = "[\\w\\._@]";
         Pattern p = Pattern.compile(regex);
         for(int i = 0; i < tf.length; i++) {
+            tf[i].setBorder(UIManager.getBorder("TextField.border"));
             if(tf[i].getText().equals("") || tf[i].getText().equals(null)) {
                 JOptionPane.showMessageDialog(null, "Não é permitido campo vazio", "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
+                tf[i].setBorder(BorderFactory.createLineBorder(Color.RED));
                 return;
             } else { 
                 for(int j = 0; j < tf[i].getText().length(); j++) {
@@ -50,6 +55,7 @@ public class ModelSistema {
                     Matcher m = p.matcher(conversao);
                     if(!m.matches()) {
                         JOptionPane.showMessageDialog(null, "Não é permitido caracter especial", "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
+                        tf[i].setBorder(BorderFactory.createLineBorder(Color.RED));
                         return;
                     }
                 }
