@@ -2,6 +2,8 @@ package Model;
 import Dao.DBAConexao;
 import Object.Pessoa;
 import java.awt.Color;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.sql.SQLException;
 import java.util.regex.*;
 import javax.swing.BorderFactory;
@@ -17,8 +19,9 @@ public class ModelSistema {
             c.conectar();
             c.stm = c.conexao.createStatement();
             c.rs = c.stm.executeQuery("SELECT NOME, USUARIO, SENHA, ATIVO FROM TB_USUARIO");
+            String senha = Criptografar(usuario.getSenha());
             while (c.rs.next()) {
-                if(usuario.getUsuario().equals(c.rs.getString("USUARIO")) && usuario.getSenha().equals(c.rs.getString("SENHA")) && c.rs.getBoolean("ATIVO") == true) {
+                if(usuario.getUsuario().equals(c.rs.getString("USUARIO")) && senha.equals(c.rs.getString("SENHA")) && c.rs.getBoolean("ATIVO") == true) {
                     usuario.setNome(c.rs.getString("NOME"));
                     return true;
                 }                
@@ -38,6 +41,18 @@ public class ModelSistema {
        }
        return false;
    }
+   
+   public String Criptografar(String str) {  
+        try {
+            MessageDigest m = MessageDigest.getInstance("MD5");
+            m.update(str.getBytes(), 0, str.length());
+            String senha = new BigInteger(1, m.digest()).toString(16);
+            return senha;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Criptografar: " + ex);
+            return "";
+        }
+    }
    
    public void validarCampos(Pessoa acesso, JTextField [] tf) {
         String regex = "[\\w\\._@]";
@@ -71,7 +86,8 @@ public class ModelSistema {
             c.pst.setString(2, acesso.getSobrenome());
             c.pst.setString(3, acesso.getEmail());
             c.pst.setString(4, acesso.getUsuario());
-            c.pst.setString(5, acesso.getSenha());
+            String senha = Criptografar(acesso.getSenha());
+            c.pst.setString(5, senha);
             c.pst.setBoolean(6, acesso.isAtivo());
             c.pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com Sucesso!");
