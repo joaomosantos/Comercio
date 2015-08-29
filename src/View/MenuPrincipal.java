@@ -127,13 +127,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Usuario"));
 
         jLabel1.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        jLabel1.setText("Nome:");
+        jLabel1.setText("Nome*:");
 
         jLabel2.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        jLabel2.setText("Sobrenome:");
+        jLabel2.setText("Sobrenome*:");
 
         jLabel3.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        jLabel3.setText("Email:");
+        jLabel3.setText("Email*:");
 
         jtfNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -142,12 +142,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jtfemail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        jLabel4.setText("Usuario:");
+        jLabel4.setText("Usuario*:");
 
         jtfUsuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        jLabel5.setText("Senha:");
+        jLabel5.setText("Senha*:");
 
         jpfSenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
