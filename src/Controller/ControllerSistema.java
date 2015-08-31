@@ -2,6 +2,7 @@ package Controller;
 import Model.*;
 import Object.Pessoa;
 import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 public class ControllerSistema {
     ModelSistema modelsistema = new ModelSistema();
@@ -14,7 +15,7 @@ public class ControllerSistema {
         return modelsistema.logoffUsuarioModel();
     }
     
-    public void salvarUsuario(Pessoa acesso, JTextField [] tf) { 
-        modelsistema.validarCampos(acesso, tf);
+    public void salvarUsuario(Pessoa acesso, JTextField [] tf, JLabel [] l) { 
+        modelsistema.validarCampos(acesso, tf, l);
     }
 }

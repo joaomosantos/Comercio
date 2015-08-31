@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import Object.Pessoa;
 import Controller.ControllerSistema;
 import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 /**
  *
@@ -17,11 +18,11 @@ import javax.swing.JTextField;
 public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form menuPrincipal
-     */
+     */ 
     public MenuPrincipal() {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("icon.png")).getImage());
-        hideFull();   
+        hideFull();
     }
     
     public void UserAtual(Pessoa usuario) { 
@@ -63,6 +64,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jpfSenha = new javax.swing.JPasswordField();
         jcbAtivo = new javax.swing.JCheckBox();
+        jlErro1 = new javax.swing.JLabel();
+        jlErro2 = new javax.swing.JLabel();
+        jlErro3 = new javax.swing.JLabel();
+        jlErro4 = new javax.swing.JLabel();
+        jlErro5 = new javax.swing.JLabel();
         jbSalvar = new javax.swing.JButton();
         jbLimpar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -156,6 +162,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jcbAtivo.setText("Ativar Conta");
         jcbAtivo.setEnabled(false);
 
+        jlErro1.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jlErro1.setForeground(new java.awt.Color(255, 0, 0));
+        jlErro1.setText("Não é permitido caracter especial ou campo em branco");
+
+        jlErro2.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jlErro2.setForeground(new java.awt.Color(255, 0, 0));
+        jlErro2.setText("Não é permitido caracter especial ou campo em branco");
+
+        jlErro3.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jlErro3.setForeground(new java.awt.Color(255, 0, 0));
+        jlErro3.setText("Não é permitido caracter especial ou campo em branco");
+
+        jlErro4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jlErro4.setForeground(new java.awt.Color(255, 0, 0));
+        jlErro4.setText("Não é permitido caracter especial ou campo em branco");
+
+        jlErro5.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jlErro5.setForeground(new java.awt.Color(255, 0, 0));
+        jlErro5.setText("Não é permitido caracter especial ou campo em branco");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -164,17 +190,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcbAtivo)
-                    .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlErro5))
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jtfemail, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jtfemail, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlErro3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlErro4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jtfSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlErro2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlErro1)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,26 +223,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlErro1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jtfSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlErro2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jtfemail, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfemail, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlErro3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlErro4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jpfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlErro5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jcbAtivo)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jbSalvar.setText("Salvar");
@@ -346,6 +397,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jmiAdministrarAcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAdministrarAcessoActionPerformed
         hideFull();
         showAdministrarAcesso(true);
+        hideLabel();
     }//GEN-LAST:event_jmiAdministrarAcessoActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -373,6 +425,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         JTextField [] tf = {jtfNome, jtfSobrenome, jtfemail, jtfUsuario, jpfSenha};
+        JLabel [] l = {jlErro1, jlErro2, jlErro3, jlErro4, jlErro5};
         Pessoa acesso = new Pessoa();
         acesso.setNome(jtfNome.getText().toUpperCase());
         acesso.setSobrenome(jtfSobrenome.getText().toUpperCase());
@@ -381,7 +434,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         acesso.setSenha(jpfSenha.getText().toUpperCase());
         acesso.setAtivo(jcbAtivo.isSelected());
         ControllerSistema controllerSistema = new ControllerSistema();
-        controllerSistema.salvarUsuario(acesso, tf);
+        controllerSistema.salvarUsuario(acesso, tf, l);
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
@@ -392,6 +445,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpfSenha.setText(null);  
     }//GEN-LAST:event_jbLimparActionPerformed
 
+    public void hideLabel() {
+        JLabel [] l = {jlErro1, jlErro2, jlErro3, jlErro4, jlErro5};
+        for(int i = 0; i < l.length; i++) {
+            l[i].setVisible(false);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -443,6 +503,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbLimpar;
     private javax.swing.JButton jbSalvar;
     private javax.swing.JCheckBox jcbAtivo;
+    private javax.swing.JLabel jlErro1;
+    private javax.swing.JLabel jlErro2;
+    private javax.swing.JLabel jlErro3;
+    private javax.swing.JLabel jlErro4;
+    private javax.swing.JLabel jlErro5;
     private javax.swing.JLabel jlUsuarioAtual;
     private javax.swing.JMenu jmConfiguracao;
     private javax.swing.JMenuBar jmbMenuPrincipal;

@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.JLabel;
 
 public class ModelSistema {
    static DBAConexao c = new DBAConexao();
@@ -54,29 +55,37 @@ public class ModelSistema {
         }
     }
    
-   public void validarCampos(Pessoa acesso, JTextField [] tf) {
-        String regex = "[\\w\\._@]";
+   public void validarCampos(Pessoa acesso, JTextField [] tf, JLabel [] l) {
+       int ocorrencia = 0; 
+       String regex = "[\\w\\._@]";
         Pattern p = Pattern.compile(regex);
         for(int i = 0; i < tf.length; i++) {
-            tf[i].setBorder(UIManager.getBorder("TextField.border"));
-            if(tf[i].getText().equals("") || tf[i].getText().equals(null)) {
-                JOptionPane.showMessageDialog(null, "Não é permitido campo vazio", "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
-                tf[i].setBorder(BorderFactory.createLineBorder(Color.RED));
-                return;
+            l[i].setVisible(false);
+            if(tf[i].getText().equals("")) {
+                l[i].setVisible(true);
+                ocorrencia++;
             } else { 
                 for(int j = 0; j < tf[i].getText().length(); j++) {
                     char c = tf[i].getText().charAt(j);
                     String conversao = Character.toString(c);
                     Matcher m = p.matcher(conversao);
                     if(!m.matches()) {
-                        JOptionPane.showMessageDialog(null, "Não é permitido caracter especial", "Banco de Dados", JOptionPane.INFORMATION_MESSAGE);
-                        tf[i].setBorder(BorderFactory.createLineBorder(Color.RED));
-                        return;
+                        l[i].setVisible(true);
+                        ocorrencia++;
                     }
                 }
             }
+        } 
+        
+        if(ocorrencia == 0) {
+            this.salvarUsuarioModel(acesso);
+            for(int i = 0; i < tf.length; i++) { 
+                tf[i].setText("");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, corrigir os campos");
         }
-        this.salvarUsuarioModel(acesso);
+        
    }
    
    public void salvarUsuarioModel(Pessoa acesso) {
